@@ -1,0 +1,2 @@
+class CareInstruction < ApplicationRecord
+end
