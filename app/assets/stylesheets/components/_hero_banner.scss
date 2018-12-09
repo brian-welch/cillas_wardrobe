@@ -1,0 +1,26 @@
+.hero-banner-outer {
+  height: calc(100vh - 70px);
+  width: 100%;
+  background-color: rgba(100,100,255,0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(-30deg, rgba(28, 29, 33, 0.75)0%, rgba(151, 125, 155, 0.35)50%, rgba(28, 29, 33, 0.5)100%);
+  background-image: linear-gradient(-30deg, rgba(28, 29, 33, 0.9)0%, rgba(28, 29, 33, 0.7)50%, rgba(28, 29, 33, 0.9)100%), url('https://images.unsplash.com/photo-1484502249930-e1da807099a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=50');
+  background-size: cover;
+  background-position: center center;
+}
+.landing-page-banner-content {
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  h1 {
+    font-weight: bolder;
+    text-shadow: 1px 0 0 black, -2px 0 0 black;
+    font-size: 3em;
+  }
+  h3 {
+    font-weight: bolder;
+    text-shadow: 1px 0 0 black, -2px 0 0 black;
+  }
+}

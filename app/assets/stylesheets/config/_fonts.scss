@@ -1,16 +1,51 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 
+@font-face {
+    font-family: 'CenturyGothic';
+    src: url('config/fonts/CenturyGothic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'NellaSue';
+    src: url('config/fonts/NellaSue.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Italiana';
+    src: url('config/fonts/Italiana.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'ModernScript';
+    src: url('config/fonts/ModernScript.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Pierce';
+    src: url('config/fonts/Pierce.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'KGSomething';
+    src: url('config/fonts/KGSomethingtoBelieveIn.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'TheAmazingGrace';
+    src: url('config/fonts/TheAmazingGrace.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'PortCreb';
+    src: url('config/fonts/portcreb.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'LittleLord';
+    src: url('config/fonts/LittleLordFontleroyNF.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'MicroFLF';
+    src: url('config/fonts/MicroFLF.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Dubiel';
+    src: url('config/fonts/Dubiel.ttf') format('truetype');
+}
 // Define fonts for body and headers
-$body-font: "Open Sans", "Helvetica", "sans-serif";
-$headers-font: "Raleway", "Helvetica", "sans-serif";
+$body-font: "MicroFLF", "Open Sans", "sans-serif";
+$headers-font: "MicroFLF", "Helvetica", "sans-serif";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
