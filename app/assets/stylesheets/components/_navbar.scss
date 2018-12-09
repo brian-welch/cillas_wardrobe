@@ -10,6 +10,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
 }
 
 
@@ -34,6 +35,13 @@
     letter-spacing: -1px;
   }
 }
+
+.navbar-cillas_wardrobe-link {
+  color: #616668;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 
 /* User Avatar */
 .navbar-wagon .avatar {

@@ -41,8 +41,15 @@
         </div>
       </div>
     <% else %>
-      <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <div class="dropdown">
+      <span class="navbar-cillas_wardrobe-link dropdown-toggle" data-toggle="dropdown">Products</span>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Clothing</a></li>
+        <li><a href="#">Shoes</a></li>
+        <li><a href="#">Home</a></li>
+      </ul>
+    </div>      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-cillas_wardrobe-link" %>
     <% end %>
   </div>
 
