@@ -11,10 +11,11 @@ status_array = %w[pending confirmed processing packed shipped arrived returned]
 style_array = %w[modern classic casual athletic formal]
 segment_array = %w[men women kids home adults girls boys]
 main_category_array = %w[clothes shoes housewares]
+category_array = %w[jackets shirts pants shorts boots trainers flats heels kitchen hall livingroom outdoor bedroom toys dresses skirts decor accessories]
 clothing_category_array = %w[jackets shirts pants shorts dresses skirts accessories]
 shoe_category_array = %w[boots trainers flats heels]
-housewares_category_array = %w[kitchen hall livingroom outdoor bedroom toys decor accessories]]
-category_array = %w[jackets shirts pants shorts boots trainers flats heels kitchen hall livingroom outdoor bedroom toys dresses skirts decor accessories]
+housewares_category_array = %w[kitchen hall livingroom outdoor bedroom toys decor accessories]
+sub_category_array = %w[one two three]
 color_array = %w[black white grey red orange yellow green blue indego violet multicolored]
 country_array = countries
 care_instructions_array = care_hash
@@ -85,7 +86,6 @@ user_array.each do |user|
                address_line_one: user[:address_line_one],
                address_line_two: user[:address_line_two],
                city: user[:city],
-               county: user[:county],
                state: user[:state],
                post_code: user[:post_code],
                country: user[:country],
@@ -123,6 +123,12 @@ category_array.each do |category|
   Category.create!(name: category)
 end
 puts "    #{Category.count} 'categories' created."
+sleep 1
+
+sub_category_array.each do |sub_category|
+  SubCategory.create!(name: sub_category)
+end
+puts "    #{SubCategory.count} 'sub-categories' created."
 sleep 1
 
 color_array.each do |color|
@@ -163,7 +169,7 @@ sleep 1
 
 12.times do
   Product.create!(
-                  name: Faker::Hipster.sentence(3) ,
+                  name: Faker::Hipster.sentence(3, false, 0)[0..-2],
                   description: Faker::Hipster.paragraph(3, false, 3),
                   price: "XXX.xx",
                   sku: Faker::Number.between(7000000000000, 8000000000000),
@@ -176,7 +182,8 @@ sleep 1
                   style_id: Style.all.sample.id,
                   segment_id: Segment.all.sample.id,
                   main_category_id: MainCategory.find_by_name("clothes").id,
-                  category_id: clothing_category_array.shuffle.pop
+                  category_id: Category.find_by_name(clothing_category_array.shuffle.pop).id,
+                  sub_category_id: SubCategory.find_by_name("one").id
                   )
 end
 puts "    12 'clothing products' created."
@@ -184,7 +191,7 @@ sleep 1
 
 12.times do
   Product.create!(
-                  name: Faker::Hipster.sentence(3) ,
+                  name: Faker::Hipster.sentence(3, false, 0)[0..-2],
                   description: Faker::Hipster.paragraph(3, false, 3),
                   price: "XXX.xx",
                   sku: Faker::Number.between(7000000000000, 8000000000000),
@@ -197,7 +204,8 @@ sleep 1
                   style_id: Style.all.sample.id,
                   segment_id: Segment.all.sample.id,
                   main_category_id: MainCategory.find_by_name("shoes").id,
-                  category_id: shoe_category_array.shuffle.pop
+                  category_id: Category.find_by_name(shoe_category_array.shuffle.pop).id,
+                  sub_category_id: SubCategory.find_by_name("two").id
                   )
 end
 puts "    12 'shoe products' created."
@@ -205,7 +213,7 @@ sleep 1
 
 12.times do
   Product.create!(
-                  name: Faker::Hipster.sentence(3) ,
+                  name: Faker::Hipster.sentence(3, false, 0)[0..-2],
                   description: Faker::Hipster.paragraph(3, false, 3),
                   price: "XXX.xx",
                   sku: Faker::Number.between(7000000000000, 8000000000000),
@@ -218,7 +226,8 @@ sleep 1
                   style_id: Style.all.sample.id,
                   segment_id: Segment.all.sample.id,
                   main_category_id: MainCategory.find_by_name("housewares").id,
-                  category_id: housewares_category_array.shuffle.pop
+                  category_id: Category.find_by_name(housewares_category_array.shuffle.pop).id,
+                  sub_category_id: SubCategory.find_by_name("three").id
                   )
 end
 puts "    12 'home products' created."
