@@ -13,4 +13,6 @@ class Product < ApplicationRecord
   has_many :tags, through: :product_tags #, dependent: :destroy
   has_many :orders, through: :order_products #, dependent: :destroy
 
+  mount_uploader :photo, PhotoUploader
+
 end
