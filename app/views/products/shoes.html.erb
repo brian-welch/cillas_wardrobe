@@ -1,1 +1,31 @@
-<h1>shoes</h1>
+<div class="container">
+  <h1 class="page-name">Clothes in Cilla's Wardrobe</h1>
+  <hr>
+
+    <% @all_shoe_products.each do |product| %>
+      <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-3">
+        <div class="index-page-card-outer">
+          <div class="index-page-card-inner">
+            <%= link_to shoes_item_path(product) do %>
+              <div class="index-page-card-image-container" style="">
+              <%= image_tag "sample_product_05.jpg" %>
+              <div class="index-page-card-image-bottom-fade"></div>
+              </div>
+              <div class="index-page-card-brand-holder">
+                <div class="index-page-card-brand-name">
+                  <%= product.brand.name %>
+                </div>
+              </div>
+              <div class="index-page-card-price">
+                <%= product.price - 1 %> SEK
+              </div>
+            <% end %>
+            <div class="index-page-card-splash">
+              <i class="fas fa-recycle"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+</div>

@@ -171,7 +171,7 @@ sleep 1
   Product.create!(
                   name: Faker::Hipster.sentence(3, false, 0)[0..-2],
                   description: Faker::Hipster.paragraph(3, false, 3),
-                  price: "XXX.xx",
+                  price: (rand(35..99) * 10),
                   sku: Faker::Number.between(7000000000000, 8000000000000),
                   quantity: 1,
                   size: clothing_size_array.shuffle.pop,
@@ -183,7 +183,8 @@ sleep 1
                   segment_id: Segment.all.sample.id,
                   main_category_id: MainCategory.find_by_name("clothes").id,
                   category_id: Category.find_by_name(clothing_category_array.shuffle.pop).id,
-                  sub_category_id: SubCategory.find_by_name("one").id
+                  sub_category_id: SubCategory.find_by_name("one").id,
+                  status: true
                   )
 end
 puts "    12 'clothing products' created."
@@ -193,7 +194,7 @@ sleep 1
   Product.create!(
                   name: Faker::Hipster.sentence(3, false, 0)[0..-2],
                   description: Faker::Hipster.paragraph(3, false, 3),
-                  price: "XXX.xx",
+                  price: (rand(35..99) * 10),
                   sku: Faker::Number.between(7000000000000, 8000000000000),
                   quantity: 1,
                   size: shoe_size_array.shuffle.pop,
@@ -205,7 +206,8 @@ sleep 1
                   segment_id: Segment.all.sample.id,
                   main_category_id: MainCategory.find_by_name("shoes").id,
                   category_id: Category.find_by_name(shoe_category_array.shuffle.pop).id,
-                  sub_category_id: SubCategory.find_by_name("two").id
+                  sub_category_id: SubCategory.find_by_name("two").id,
+                  status: true
                   )
 end
 puts "    12 'shoe products' created."
@@ -215,7 +217,7 @@ sleep 1
   Product.create!(
                   name: Faker::Hipster.sentence(3, false, 0)[0..-2],
                   description: Faker::Hipster.paragraph(3, false, 3),
-                  price: "XXX.xx",
+                  price: (rand(35..99) * 10),
                   sku: Faker::Number.between(7000000000000, 8000000000000),
                   quantity: 1,
                   size: "onesize",
@@ -227,7 +229,8 @@ sleep 1
                   segment_id: Segment.all.sample.id,
                   main_category_id: MainCategory.find_by_name("housewares").id,
                   category_id: Category.find_by_name(housewares_category_array.shuffle.pop).id,
-                  sub_category_id: SubCategory.find_by_name("three").id
+                  sub_category_id: SubCategory.find_by_name("three").id,
+                  status: true
                   )
 end
 puts "    12 'home products' created."

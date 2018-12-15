@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_084132) do
+ActiveRecord::Schema.define(version: 2018_12_14_161954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(version: 2018_12_10_084132) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "price"
     t.string "sku"
     t.string "quantity"
     t.string "size"
@@ -147,6 +146,9 @@ ActiveRecord::Schema.define(version: 2018_12_10_084132) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "pattern_id"
+    t.text "photos", default: [], array: true
+    t.integer "price"
+    t.boolean "live_status", default: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["color_id"], name: "index_products_on_color_id"

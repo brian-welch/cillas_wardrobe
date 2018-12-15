@@ -1,7 +1,7 @@
 html {
   background-color: $color2;
 }
-h1, h2, h3, h4, h5, h6, p, i, li, ul, ol, span, div, button, input, th, td, a, img, caption, label {
+h1, h2, h3, h4, h5, h6, p, i, li, ul, ol, span, div, select, button, input, th, td, a, img, caption, label {
   transition: all 300ms ease;
 }
 a {
@@ -14,4 +14,18 @@ hr {
 
 body {
   padding-top: 70px;
+}
+
+.page-name {
+  text-align: center;
+  color: rgba(28, 29, 33, 0.6);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 rgba(242, 239, 239, 0.8), 0 -1px 0 rgba(28, 29, 33, 0.8);
+}
+
+input, select {
+  border-bottom-right-radius: 15px 100% !important;
+  border-bottom-left-radius: 15px 100% !important;
+  border-top-right-radius: 15px 100% !important;
+  border-top-left-radius: 15px 100% !important;
+  border: 1px solid rgba(255,255,255,0.5);
 }
