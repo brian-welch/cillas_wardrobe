@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="page-name">Clothes in Cilla's Wardrobe</h1>
+  <hr>
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+    <div id="new-product-form-container">
+
+      <%= simple_form_for @new_product, html:{class: "new-product-form", id: "new_product_step_one"}, remote: true do |f| %>
+      <%= f.error_notification %>
+      <fieldset class="new-product-input-block">
+        <legend class="new-product-input-block-title">
+          Step One
+        </legend>
+        <div class="form-input">
+          <%= f.input :name, class: '' %>
+        </div>
+        <div class="form-row">
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :size, class: '' %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+          <%= f.association :color, class: '' %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+          <%= f.association :pattern, class: '' %>
+          </div>
+        </div>
+
+      </fieldset>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
