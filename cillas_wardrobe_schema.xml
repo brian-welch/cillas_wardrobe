@@ -98,9 +98,6 @@
 <row name="quantity" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="size" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="product_number" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -115,6 +112,10 @@
 <row name="color_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="colors" row="id" />
+</row>
+<row name="size_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="size" row="id" />
 </row>
 <row name="style_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -171,7 +172,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="522" y="308" name="segments">
+<table x="521" y="333" name="segments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -182,7 +183,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="482" y="386" name="main_categories">
+<table x="481" y="411" name="main_categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -193,7 +194,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="520" y="465" name="categories">
+<table x="519" y="490" name="categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -204,7 +205,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="491" y="548" name="sub_categories">
+<table x="490" y="573" name="sub_categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -409,7 +410,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="548" y="226" name="styles">
+<table x="547" y="251" name="styles">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -422,6 +423,20 @@
 </table>
 <table x="117" y="556" name="statuses">
 <row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="559" y="154" name="size">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="code_num" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">

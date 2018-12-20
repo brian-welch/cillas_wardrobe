@@ -15,6 +15,7 @@ def users
         post_code: "21114",
         country: "Sweden",
         mobile_number: "+46 734 333 232"
+
       }, {
         first_name: "cecilia",
         last_name: "frick welch",

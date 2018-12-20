@@ -3,12 +3,14 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.string :name
       t.text :description
-      t.string :price
+      t.integer :price
       t.string :sku
-      t.string :quantity
-      t.string :size
+      t.integer :quantity
       t.string :product_number
+      t.boolean :live_status
       t.references :brand, foreign_key: true
+      t.references :size, foreign_key: true
+      t.references :pattern, foreign_key: true
       t.references :country, foreign_key: true
       t.references :color, foreign_key: true
       t.references :style, foreign_key: true

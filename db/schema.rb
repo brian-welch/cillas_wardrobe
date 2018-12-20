@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_161954) do
+ActiveRecord::Schema.define(version: 2018_12_20_091505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
 
   create_table "colors", force: :cascade do |t|
     t.string "name"
+    t.string "code_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
 
   create_table "patterns", force: :cascade do |t|
     t.string "name"
+    t.string "code_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,6 +113,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
   end
 
   create_table "product_materials", force: :cascade do |t|
+    t.integer "percent"
     t.bigint "product_id"
     t.bigint "material_id"
     t.datetime "created_at", null: false
@@ -131,11 +134,14 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "price"
     t.string "sku"
-    t.string "quantity"
-    t.string "size"
+    t.integer "quantity"
     t.string "product_number"
+    t.boolean "live_status"
     t.bigint "brand_id"
+    t.bigint "size_id"
+    t.bigint "pattern_id"
     t.bigint "country_id"
     t.bigint "color_id"
     t.bigint "style_id"
@@ -145,10 +151,9 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
     t.bigint "sub_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "pattern_id"
-    t.text "photos", default: [], array: true
-    t.integer "price"
-    t.boolean "live_status", default: false
+    t.integer "length"
+    t.integer "waist"
+    t.json "photos"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["color_id"], name: "index_products_on_color_id"
@@ -156,6 +161,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
     t.index ["main_category_id"], name: "index_products_on_main_category_id"
     t.index ["pattern_id"], name: "index_products_on_pattern_id"
     t.index ["segment_id"], name: "index_products_on_segment_id"
+    t.index ["size_id"], name: "index_products_on_size_id"
     t.index ["style_id"], name: "index_products_on_style_id"
     t.index ["sub_category_id"], name: "index_products_on_sub_category_id"
   end
@@ -168,6 +174,13 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
 
   create_table "segments", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "name"
+    t.string "code_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -248,6 +261,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_161954) do
   add_foreign_key "products", "main_categories"
   add_foreign_key "products", "patterns"
   add_foreign_key "products", "segments"
+  add_foreign_key "products", "sizes"
   add_foreign_key "products", "styles"
   add_foreign_key "products", "sub_categories"
   add_foreign_key "user_reviews", "users"
