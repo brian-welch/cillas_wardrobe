@@ -1,32 +1,138 @@
 <div class="container">
-  <h1 class="page-name">Clothes in Cilla's Wardrobe</h1>
+  <h1 class="page-name"><span>NEW</span> in Cilla's Wardrobe</h1>
   <hr>
   <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <h6 style="font-weight:bold;">Note: To add new products, you must be certain that the following perameters already exist in the data base:</h6>
+        <ul>
+          <li>the brand</li>
+          <li>the size</li>
+          <li>the pattern</li>
+          <li>the color</li>
+          <li>the style</li>
+          <li>the segment, main category and category</li>
+        </ul>
+        <h6 style="font-weight:bold;">You can add a new <strong>brand</strong> <a href=""><em><u>HERE</u></em></a>. If you need any other new parameters, you must contact <a href=""><em><u>ADMIN</u></em></a> to assist you.</h6>
+      </div>
+    </div>
+    <hr>
     <div id="new-product-form-container">
-
-      <%= simple_form_for @new_product, html:{class: "new-product-form", id: "new_product_step_one"}, remote: true do |f| %>
+      <%= simple_form_for @new_product, html:{class: "new-product-form", id: "new_product_step_one"} do |f| %>
       <%= f.error_notification %>
-      <fieldset class="new-product-input-block">
+      <fieldset class="new-product-input-block"><!-- , remote: true -->
         <legend class="new-product-input-block-title">
-          Step One
+          Step One: Product Base
         </legend>
         <div class="form-input">
           <%= f.input :name, class: '' %>
         </div>
         <div class="form-row">
           <div class="col-xs-12 col-sm-4">
-            <%= f.input :size, class: '' %>
+            <%= f.association :size, collection: @all_sizes.map{ |s| [s.name, s.id, {'data-code-num' => s.code_num}]}, input_html:{class: 'sku-suffix-component', 'data-code-num' => "test"} %>
           </div>
           <div class="col-xs-12 col-sm-4">
-          <%= f.association :color, class: '' %>
+            <%= f.association :color, collection: @all_colors.map{ |s| [s.name, s.id, {'data-code-num' => s.code_num}]}, input_html:{class: 'sku-suffix-component'} %>
           </div>
           <div class="col-xs-12 col-sm-4">
-          <%= f.association :pattern, class: '' %>
+            <%= f.association :pattern, collection: @all_patterns.map{ |s| [s.name, s.id, {'data-code-num' => s.code_num}]}, input_html:{class: 'sku-suffix-component'} %>
           </div>
         </div>
+        <div class="form-row">
+          <%= f.input :product_number, input_html:{ value: @new_product.product_number, class: "sku-suffix-component" } %>
 
+          <%= f.input :sku, html:{id: "new-product-form-sku-input"} %>  <!--  as: :hidden, -->
+
+          <%= f.input :live_status, :input_html => { :value => @new_product.live_status } %>
+        </div>
       </fieldset>
+      <hr>
+      <fieldset class="new-product-input-block"><!-- , remote: true -->
+        <legend class="new-product-input-block-title">
+          Step Two: Product Details
+        </legend>
+        <div class="form-input">
+          <%= f.input :description, as: :text, input_html:{class: 'new-product-form-description-field'} %>
+        </div>
+        <div class="form-row">
+          <div class="col-xs-12 col-sm-3">
+            <%= f.association :brand, class: '' %>
+          </div>
+          <div class="col-xs-12 col-sm-3">
+          <%= f.association :style, input_html:{class: ''} %>
+          </div>
+          <div class="col-xs-12 col-sm-3">
+            <div class="new-product-price-input-outer-wrapper">
+              <%= f.input :price, input_html:{step: "10"} %>
+              <div class="new-product-form-currency-type">SEK</div>
+              </div>
+            </div>
+          <div class="col-xs-12 col-sm-3">
+          <%= f.input :quantity, input_html:{value: 1}%>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-xs-12 col-sm-4">
+            <%= f.association :segment, class: '' %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+          <%= f.association :main_category, class: '' %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+          <%= f.association :category, class: '' %>
+          </div>
+        </div>
+      </fieldset>
+      <hr>
+      <fieldset class="new-product-input-block"><!-- , remote: true -->
+        <legend class="new-product-input-block-title">
+          Step Three: Manufacture &amp; Materials
+        </legend>
+        <h6 align="center">A maximum of 5 material components possible.<br>If you need more contact <a href=""><em><u>ADMIN</u></em></a> to assist you.</h6>
+        <hr>
+        <div class="form-row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <%= f.association :country, class: '' %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <% 5.times.with_index do |_, i| %>
+          <% num = i + 1 %>
+          <div class="col-xs-4">
+            <div class="form-group integer product_quantity">
+              <label class="form-control-label integer" for="material_percent_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">Percent</label>
+              <input class="form-control numeric integer required" type="number" step="1" name="material_percent_<%= num < 10 ? "0" + num.to_s : num.to_s %>" id="material_percent_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="form-group select product_segment">
+              <label class="form-control-label select" for="material_name_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">Material Component #<%= num %> </label>
+              <select class="form-control select" name="material_name_<%= num < 10 ? "0" + num.to_s : num.to_s %>" id="material_name_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">
+                <option value=""></option>
+                <% @all_materials.each do |material| %>
+                <option value="<%= material.id %>"><%= material.name %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </fieldset>
+      <hr>
+      <fieldset class="new-product-input-block">
+        <legend class="new-product-input-block-title">
+          Step Four: Images
+        </legend>
+        <%= f.file_field :photos, multiple: true %>
+        <%= f.input :photos_cache, as: :hidden %>
+        <!-- <input type="text" name="test_01"><br>
+        <input type="text" name="test_01"> -->
+        <!-- <h6 align="center">Check all that apply.<br>If you need more contact <a href=""><em><u>ADMIN</u></em></a> to assist you.</h6>
+        <hr> -->
+      </fieldset>
+        <div class="form-row" style="display: flex; justify-content: space-around;">
+          <%= f.button :submit, class: 'btn btn-success add-brand-button' %>
+        </div>
       <% end %>
 
     </div>

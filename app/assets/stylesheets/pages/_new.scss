@@ -16,3 +16,47 @@
   border-bottom: none;
   color: $color1;
 }
+
+.alert.alert-danger {
+  color: $red;
+}
+
+.new-product-form-description-field {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.new-product-form-price-currency {
+  font-weight: 600;
+  color: $color4;
+  height: 69px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  div {
+    margin: 0 0 8px -30px;
+  }
+}
+
+.new-product-form-left-alley-box {
+  position: sticky;
+  top: 80px;
+}
+
+.new-product-form-currency-type {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0 10px 0 0;
+  font-size: 0.9em;
+  line-height: 25px;
+  font-weight: 600;
+  font-style: italic;
+  color: $red;
+}
+
+.new-product-price-input-outer-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}

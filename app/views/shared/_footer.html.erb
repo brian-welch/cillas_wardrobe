@@ -1,22 +1,25 @@
 
 <div class="footer-cillas_wardrobe-container">
   <div class="container">
-    <div class="col-xs-12 col-md-3">
-      <div class="footer-side-column">
-      </div>
-    </div>
-    <div class="col-xs-12 col-md-6">
-      <div class="footer-middle-column">
-        <div>© <%= Time.now.year %> Cecilia Frick Welch. All rights reserved.</div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-md-3">
-      <div class="footer-side-column">
+    <div class="col-xs-12 col-md-4">
+      <div class="footer-column">
         <ul>
-          <li><a href="">about</a></li>
-          <li><a href="">terms & conditions</a></li>
-          <li><a href="">unfamous fashion notes</a></li>
+          <li><%= link_to "sell your clothes here" %></li>
         </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="footer-column">
+        <ul>
+          <li><%= link_to "about", '/about' %></li>
+          <li><a href="">terms & conditions</a></li>
+          <li><a href="">fashion notes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="footer-column">
+        <div style="text-align: center;">© <%= Time.now.year %> Cecilia Frick Welch.<br>All rights reserved.</div>
       </div>
     </div>
   </div>

@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get 'home', to: 'products#home'
   get 'home/:id', to: 'products#show', as: 'home/item'
 
-  get 'products/new', to: 'products#new'
-  post 'products', to: 'products#create'
+  # get 'products/new', to: 'products#new'
+  # post 'products', to: 'products#create'
+
+  resources :products
+
 
 end
