@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  mount_uploader :photos, PhotoUploader
+  mount_uploaders :photos, PhotoUploader
 
   belongs_to :brand
   belongs_to :country

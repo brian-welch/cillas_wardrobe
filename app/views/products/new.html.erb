@@ -106,8 +106,8 @@
           </div>
           <div class="col-xs-8">
             <div class="form-group select product_segment">
-              <label class="form-control-label select" for="material_name_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">Material Component #<%= num %> </label>
-              <select class="form-control select" name="material_name_<%= num < 10 ? "0" + num.to_s : num.to_s %>" id="material_name_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">
+              <label class="form-control-label select" for="material_id_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">Material Component #<%= num %> </label>
+              <select class="form-control select" name="material_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>" id="material_id_id_<%= num < 10 ? "0" + num.to_s : num.to_s %>">
                 <option value=""></option>
                 <% @all_materials.each do |material| %>
                 <option value="<%= material.id %>"><%= material.name %></option>
