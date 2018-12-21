@@ -153,7 +153,7 @@ ActiveRecord::Schema.define(version: 2018_12_20_091505) do
     t.datetime "updated_at", null: false
     t.integer "length"
     t.integer "waist"
-    t.json "photos"
+    t.json "photos", default: []
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["color_id"], name: "index_products_on_color_id"
