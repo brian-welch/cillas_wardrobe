@@ -1,3 +1,6 @@
 <div class="container">
-<%= cl_image_tag("#{@product.photos[0]}", height: 300, crop: :fill) %>
+<%#= image_tag("#{@product.photos[0]}", height: 300, crop: :fill) %>
+<% (0...@product.photos.count).each do |img| %>
+<%= image_tag(@product.photos[img], style: "height:300px;") %>
+<% end %>
 </div>

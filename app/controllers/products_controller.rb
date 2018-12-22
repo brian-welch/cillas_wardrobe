@@ -34,16 +34,15 @@ class ProductsController < ApplicationController
     @all_colors = Color.all
     @all_patterns = Pattern.all
     @new_product = Product.new(new_product_params)
-    byebug
     @all_materials = Material.all
     # @new_product.user = current_user
 
     if @new_product.save
       5.times.with_index do |_, i|
-        if params["material_name_0#{(i + 1)}"] != ""
+        if params["material_id_0#{(i + 1)}"] != ""
           ProductMaterial.create!(product_id: @new_product.id,
-                                  material_id: params["material_name_0#{(i + 1)}"].to_i,
-                                  percent: params[:percent])
+                                  material_id: params["material_id_0#{(i + 1)}"].to_i,
+                                  percent: params["material_percent_0#{(i + 1)}"].to_i)
         else
           break
         end
@@ -57,7 +56,7 @@ class ProductsController < ApplicationController
   private
 
   def new_product_params
-
+    # byebug
     params.require(:product).permit(:name,
                                     :size_id,
                                     :color_id,
@@ -74,7 +73,7 @@ class ProductsController < ApplicationController
                                     :main_category_id,
                                     :category_id,
                                     :country_id,
-                                    {photos: []})
+                                    photos: [])
   end
 
   def new_product_material_params
@@ -84,11 +83,11 @@ class ProductsController < ApplicationController
                                     :material_percent_03,
                                     :material_percent_04,
                                     :material_percent_05,
-                                    :material_name_01,
-                                    :material_name_02,
-                                    :material_name_03,
-                                    :material_name_04,
-                                    :material_name_05
+                                    :material_id_01,
+                                    :material_id_02,
+                                    :material_id_03,
+                                    :material_id_04,
+                                    :material_id_05
                                     )
   end
 
