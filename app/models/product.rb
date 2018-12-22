@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
 
-  mount_uploaders :photos, PhotoUploader
+  # mount_uploaders :photos, PhotoUploader
+  # serialize :avatars, JSON
 
   belongs_to :brand
   belongs_to :country
@@ -12,6 +13,8 @@ class Product < ApplicationRecord
   belongs_to :main_category
   belongs_to :category
   # belongs_to :sub_category
+
+  has_many_attached :photos
 
   has_many :product_materials, dependent: :destroy
   has_many :product_care_instructions, dependent: :destroy

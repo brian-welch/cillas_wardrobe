@@ -34,32 +34,15 @@ class ProductsController < ApplicationController
     @all_colors = Color.all
     @all_patterns = Pattern.all
     @new_product = Product.new(new_product_params)
-                               # name: params[:product][:name],
-                               # size_id: params[:product][:size_id],
-                               # color_id: params[:product][:color_id],
-                               # pattern_id: params[:product][:pattern_id],
-                               # product_number: params[:product][:product_number],
-                               # sku:params[:product][:sku],
-                               # live_status: params[:product][:live_status],
-                               # description: params[:product][:description],
-                               # brand_id: params[:product][:brand_id],
-                               # price: params[:product][:price],
-                               # quantity: params[:product][:quantity],
-                               # style_id: params[:product][:style_id],
-                               # segment_id: params[:product][:segment_id],
-                               # main_category_id: params[:product][:main_category_id],
-                               # category_id: params[:product][:category_id],
-                               # country_id: params[:product][:country_id],
-                               # photos: params[:product][{photos: []}]
     @all_materials = Material.all
     # @new_product.user = current_user
 
     if @new_product.save
       5.times.with_index do |_, i|
-        if params["material_name_0#{(i + 1)}"] != ""
+        if params["material_id_0#{(i + 1)}"] != ""
           ProductMaterial.create!(product_id: @new_product.id,
-                                  material_id: params["material_name_0#{(i + 1)}"].to_i,
-                                  percent: params[:percent])
+                                  material_id: params["material_id_0#{(i + 1)}"].to_i,
+                                  percent: params["material_percent_0#{(i + 1)}"].to_i)
         else
           break
         end
@@ -73,7 +56,7 @@ class ProductsController < ApplicationController
   private
 
   def new_product_params
-
+    # byebug
     params.require(:product).permit(:name,
                                     :size_id,
                                     :color_id,
@@ -90,7 +73,7 @@ class ProductsController < ApplicationController
                                     :main_category_id,
                                     :category_id,
                                     :country_id,
-                                    {photos: []})
+                                    photos: [])
   end
 
   def new_product_material_params

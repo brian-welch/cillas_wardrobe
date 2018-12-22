@@ -101,21 +101,9 @@
 <row name="product_number" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="brand_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="brands" row="id" />
-</row>
 <row name="country_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="countries" row="id" />
-</row>
-<row name="color_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="colors" row="id" />
-</row>
-<row name="size_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="size" row="id" />
 </row>
 <row name="style_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -137,6 +125,22 @@
 <row name="sub_category_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="sub_categories" row="id" />
+</row>
+<row name="brand_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="brands" row="id" />
+</row>
+<row name="size_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="size" row="id" />
+</row>
+<row name="color_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="colors" row="id" />
+</row>
+<row name="pattern_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="patterns" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -350,7 +354,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="795" y="572" name="brands">
+<table x="547" y="653" name="brands">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -361,7 +365,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="758" y="500" name="countries">
+<table x="525" y="175" name="countries">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -372,11 +376,14 @@
 <part>id</part>
 </key>
 </table>
-<table x="763" y="428" name="colors">
+<table x="761" y="534" name="colors">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="code_num" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -432,7 +439,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="559" y="154" name="size">
+<table x="789" y="634" name="size">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -440,6 +447,20 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="732" y="436" name="patterns">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="code_num" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">

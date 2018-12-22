@@ -78,7 +78,7 @@ role_array.each do |role|
   Role.create!(name: role)
 end
 puts "    #{Role.count} 'roles' created."
-sleep 1
+sleep 0.5
 roles_array = Role.all
 user_array.each_with_index do |user, i|
   User.create!(
@@ -99,43 +99,43 @@ user_array.each_with_index do |user, i|
                )
 end
 puts "    #{User.count} 'users' created."
-sleep 1
+sleep 0.5
 
 status_array.each do |status|
   Status.create!(name: status)
 end
 puts "    #{Status.count} 'statuses' created."
-sleep 1
+sleep 0.5
 
 style_array.each do |style|
   Style.create!(name: style)
 end
 puts "    #{Style.count} 'styles' created."
-sleep 1
+sleep 0.5
 
 segment_array.each do |segment|
   Segment.create!(name: segment)
 end
 puts "    #{Segment.count} 'segments' created."
-sleep 1
+sleep 0.5
 
 main_category_array.each do |main_category|
   MainCategory.create!(name: main_category)
 end
 puts "    #{MainCategory.count} 'main categories' created."
-sleep 1
+sleep 0.5
 
 category_array.each do |category|
   Category.create!(name: category)
 end
 puts "    #{Category.count} 'categories' created."
-sleep 1
+sleep 0.5
 
 sub_category_array.each do |sub_category|
   SubCategory.create!(name: sub_category)
 end
 puts "    #{SubCategory.count} 'sub-categories' created."
-sleep 1
+sleep 0.5
 
 color_array.each_with_index do |color, i|
   Color.create!(
@@ -144,7 +144,7 @@ color_array.each_with_index do |color, i|
                )
 end
 puts "    #{Color.count} 'colors' created."
-sleep 1
+sleep 0.5
 
 all_sizes_array.each_with_index do |size, i|
   Size.create!(
@@ -153,7 +153,7 @@ all_sizes_array.each_with_index do |size, i|
               )
 end
 puts "    #{Size.count} 'sizes' created."
-sleep 1
+sleep 0.5
 
 pattern_array.each_with_index do |pattern, i|
   Pattern.create!(
@@ -162,37 +162,37 @@ pattern_array.each_with_index do |pattern, i|
               )
 end
 puts "    #{Pattern.count} 'patterns' created."
-sleep 1
+sleep 0.5
 
 country_array.each do |country|
   Country.create!(name: country)
 end
 puts "    #{Country.count} 'countries' created."
-sleep 1
+sleep 0.5
 
 20.times do
   Brand.create!(name: Faker::LordOfTheRings.character)
 end
 puts "    #{Brand.count} 'brands' created."
-sleep 1
+sleep 0.5
 
 care_instructions_array.each do |care_instruction|
   CareInstruction.create!(image: care_instruction[:image], copy: care_instruction[:copy])
 end
 puts "    #{CareInstruction.count} 'care instructions' created."
-sleep 1
+sleep 0.5
 
 materials_array.each do |material|
   Material.create!(name: material)
 end
 puts "    #{Material.count} 'materials' created."
-sleep 1
+sleep 0.5
 
 tags_array.each do |tag|
   Tag.create!(name: tag)
 end
 puts "    #{Tag.count} 'tags' created."
-sleep 1
+sleep 0.5
 
 12.times do
   p_num = make_prod_num
@@ -226,7 +226,7 @@ sleep 1
   end
 end
 puts "    12 'clothing products' created."
-sleep 1
+sleep 0.5
 
 12.times do
   p_num = make_prod_num
@@ -252,7 +252,7 @@ sleep 1
                   )
 end
 puts "    12 'shoe products' created."
-sleep 1
+sleep 0.5
 
 12.times do
   p_num = make_prod_num
@@ -278,7 +278,7 @@ sleep 1
                   )
 end
 puts "    12 'home products' created."
-sleep 1
+sleep 0.5
 
 puts '- ' * 30 + "\n"
 puts '*' * 23
