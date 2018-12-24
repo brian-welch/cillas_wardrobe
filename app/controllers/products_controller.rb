@@ -3,6 +3,11 @@ class ProductsController < ApplicationController
   before_action :set_all_products
   before_action :set_one_product, only: [:show]
 
+  def index
+    @all_pending_products = @all_products.where(live_status: false);
+    @all_live_products = @all_products.where(live_status: true)
+  end
+
   def shoes
     @all_shoe_products = @all_products.where("main_category_id = ? AND live_status = ?", MainCategory.find_by_name("shoes").id, true)
 
@@ -25,7 +30,6 @@ class ProductsController < ApplicationController
     @all_colors = Color.all
     @all_patterns = Pattern.all
     @all_materials = Material.all
-    @all_care_instructions = CareInstruction.all
   end
 
   def create
@@ -33,7 +37,7 @@ class ProductsController < ApplicationController
     @all_sizes = Size.all
     @all_colors = Color.all
     @all_patterns = Pattern.all
-    @new_product = Product.new(new_product_params)
+    @new_product = Product.new(product_params)
     @all_materials = Material.all
     # @new_product.user = current_user
 
@@ -53,9 +57,46 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    @all_sizes = Size.all
+    @all_colors = Color.all
+    @all_patterns = Pattern.all
+    @all_materials = Material.all
+    @product_materials = ProductMaterial.where(product_id: params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product = Product.update(product_params)
+    @all_sizes = Size.all
+    @all_colors = Color.all
+    @all_patterns = Pattern.all
+    @all_materials = Material.all
+
+    if @product.save
+      5.times.with_index do |_, i|
+        if params["material_id_0#{(i + 1)}"] != ""
+          ProductMaterial.create!(product_id: @product.id,
+                                  material_id: params["material_id_0#{(i + 1)}"].to_i,
+                                  percent: params["material_percent_0#{(i + 1)}"].to_i)
+        else
+          break
+        end
+      end
+      redirect_to @product
+    else
+      render :edit
+    end
+
+  end
+
+
+
+
   private
 
-  def new_product_params
+  def product_params
     # byebug
     params.require(:product).permit(:name,
                                     :size_id,
@@ -76,19 +117,25 @@ class ProductsController < ApplicationController
                                     photos: [])
   end
 
-  def new_product_material_params
-    params.require(:product).permit(
-                                    :material_percent_01,
-                                    :material_percent_02,
-                                    :material_percent_03,
-                                    :material_percent_04,
-                                    :material_percent_05,
-                                    :material_id_01,
-                                    :material_id_02,
-                                    :material_id_03,
-                                    :material_id_04,
-                                    :material_id_05
-                                    )
+  def edit_product_params
+    # byebug
+    params.require(:product).permit(:name,
+                                    :size_id,
+                                    :color_id,
+                                    :pattern_id,
+                                    :product_number,
+                                    :sku,
+                                    :live_status,
+                                    :description,
+                                    :brand_id,
+                                    :price,
+                                    :quantity,
+                                    :style_id,
+                                    :segment_id,
+                                    :main_category_id,
+                                    :category_id,
+                                    :country_id,
+                                    photos: [])
   end
 
   def make_prod_num

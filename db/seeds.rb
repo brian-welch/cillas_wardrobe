@@ -224,6 +224,7 @@ sleep 0.5
                             percent: 33
                             )
   end
+
 end
 puts "    12 'clothing products' created."
 sleep 0.5

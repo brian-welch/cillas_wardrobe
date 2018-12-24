@@ -1,6 +1,10 @@
 <div class="container">
-<%#= image_tag("#{@product.photos[0]}", height: 300, crop: :fill) %>
-<% (0...@product.photos.count).each do |img| %>
-<%= image_tag(@product.photos[img], style: "height:300px;") %>
-<% end %>
+<%# (0...@product.photos.count).each do |img_index| %>
+<h3>Front Image:</h3>
+<%= image_tag(@product.photos[0], style: "height:300px;") %>
+<h3>Back Image:</h3>
+<%= image_tag(@product.photos[1], style: "height:300px;") %>
+
+<%# end %>
+
 </div>
