@@ -1,0 +1,123 @@
+.show-page-left-column-outer, .show-page-right-column-outer {
+  height: calc(100vh - 70px);
+  padding: 2px;
+  // outline: blue dotted 1px;
+  overflow: hidden;
+  hr {
+    margin: 15px 0 10px 0;
+  }
+}
+
+.show-page-left-column-inner {
+  height: 100%;
+  padding: 2px;
+  // outline: dotted 1px red;
+  overflow: hidden;
+}
+
+.show-page-product-breadcrumb {
+  outline: dotted green 1px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.show-page-product-image-container {
+  // outline: dotted purple 1px;
+  overflow: hidden;
+  height: calc(100% - 20px);
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flow-start;
+  img {
+    height: calc(100% - 32px);
+    position: absolute;
+    //outline: blue 1px dotted;
+  }
+}
+
+.top-photo {
+  z-index: 10;
+}
+
+.show-page-product-image-selector-container {
+  position: absolute;
+  width: 100%;
+  height: 32px;
+  z-index: 10;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image-number-button {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: white;
+  color:  darken($color7, 5%);
+  box-shadow: 0 0 0 1px darken($color7, 5%);
+  display: absolute;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 5px;
+  &.active {
+    background-color: $color1;
+    color: $color5;
+  box-shadow: 0 0 0 1px white;
+  }
+}
+
+
+
+.show-page-product-name {
+  // outline: 1px orange dotted;
+  h1 {
+    font-size: 1.25em;
+    font-variant: small-caps;
+    span {
+      font-style: italic;
+      font-size: 0.9em;
+    }
+  }
+}
+
+.show-page-size, .show-page-price, .show-page-description {
+  font-size: 0.9em;
+  // margin: 0 0 1px 0;
+  :nth-child(n) {
+    min-width: 60px;
+  }
+  span {
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+    text-align: right;
+    color: $color5;
+    background-color: darken($color7, 10%);
+    opacity: 0.5;
+    border-radius: 1px;
+    padding: 2px 5px;
+    display: inline-block;
+    margin: 0 8px 0 0;
+  }
+  p {
+    margin: 10px 0 0 10px
+  }
+}
+
+.show-page-product-info-container {
+  margin: 0 0 0 10px;
+  ul {
+    padding: 0;
+    margin: 10px 0 0 10px;
+    li {
+      list-style: none;
+    }
+  }
+}

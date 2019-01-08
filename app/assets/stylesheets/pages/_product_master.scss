@@ -33,5 +33,8 @@
     }
   }
   .product-master-list-thumbnail {
-    height: 30px;
+    height: 50px;
+    img {
+      height: 100%;
+    }
   }

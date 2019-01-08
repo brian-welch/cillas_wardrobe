@@ -21,7 +21,11 @@
               <% @all_live_products.each do |product| %>
               <tr>
                 <td class="product-master-list-thumbnail">
-                  <%#= image_tag(product.photos[0], style:'height:100%;' ) %>
+                  <% if !product.photos[0].nil? %>
+                    <%= image_tag product.photos[0] %>
+                  <% else %>
+                    <%= image_tag "placeholder_prouct_image_01.jpg" %>
+                  <% end %>
                 </td>
                 <td>
                   <%= link_to product.name, edit_product_path(product) %>

@@ -1,11 +1,11 @@
 .product-edit-image-container {
   display: flex;
   & > div {
-    box-shadow: -5px 0 0 -4px lighten($color2, 20%);
+    box-shadow: -20px 10px 0 -19px lighten($color2, 20%);
   }
   & > div:last-child {
-    box-shadow: -5px 0 0 -4px lighten($color2, 20%),
-                5px 0 0 -4px lighten($color2, 20%);
+    box-shadow: -20px 10px 0 -19px lighten($color2, 20%),
+                20px 10px 0 -19px lighten($color2, 20%);
   }
 }
 

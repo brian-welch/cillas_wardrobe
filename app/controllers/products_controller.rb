@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_all_products
   before_action :set_one_product, only: [:show]
+  before_action :refer_url
 
   def index
     @all_pending_products = @all_products.where(live_status: false);
@@ -22,10 +23,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product_materials = ProductMaterial.where(product_id: params[:id])
   end
 
   def new
-    @new_product = Product.new(product_number: make_prod_num, live_status: false)
+    @product = Product.new(product_number: make_prod_num, live_status: false)
     @all_sizes = Size.all
     @all_colors = Color.all
     @all_patterns = Pattern.all
@@ -37,21 +39,21 @@ class ProductsController < ApplicationController
     @all_sizes = Size.all
     @all_colors = Color.all
     @all_patterns = Pattern.all
-    @new_product = Product.new(product_params)
+    @product = Product.new(product_params)
     @all_materials = Material.all
-    # @new_product.user = current_user
+    # @product.user = current_user
 
-    if @new_product.save
+    if @product.save
       5.times.with_index do |_, i|
         if params["material_id_0#{(i + 1)}"] != ""
-          ProductMaterial.create!(product_id: @new_product.id,
+          ProductMaterial.create!(product_id: @product.id,
                                   material_id: params["material_id_0#{(i + 1)}"].to_i,
                                   percent: params["material_percent_0#{(i + 1)}"].to_i)
         else
           break
         end
       end
-      redirect_to @new_product
+      redirect_to @product
     else
       render :new
     end
@@ -68,7 +70,9 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product = Product.update(product_params)
+    # byebug
+    @product.update(product_params)
+
     @all_sizes = Size.all
     @all_colors = Color.all
     @all_patterns = Pattern.all
@@ -76,7 +80,17 @@ class ProductsController < ApplicationController
 
     if @product.save
       5.times.with_index do |_, i|
-        if params["material_id_0#{(i + 1)}"] != ""
+        if !params["exist_material_id_0#{(i + 1)}"].nil?
+          if (params["exist_material_id_0#{(i + 1)}"]) == "0"
+            # byebug
+            ProductMaterial.find(params["prod_mat_0#{(i + 1)}"].to_i).destroy
+          else
+            temp = ProductMaterial.find(params["prod_mat_0#{(i + 1)}"].to_i)
+            temp.update!(product_id: @product.id,
+                         material_id: params["exist_material_id_0#{(i + 1)}"].to_i,
+                         percent: params["exist_material_percent_0#{(i + 1)}"].to_i)
+          end
+        elsif params["material_id_0#{(i + 1)}"] != ""
           ProductMaterial.create!(product_id: @product.id,
                                   material_id: params["material_id_0#{(i + 1)}"].to_i,
                                   percent: params["material_percent_0#{(i + 1)}"].to_i)
@@ -97,27 +111,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    # byebug
-    params.require(:product).permit(:name,
-                                    :size_id,
-                                    :color_id,
-                                    :pattern_id,
-                                    :product_number,
-                                    :sku,
-                                    :live_status,
-                                    :description,
-                                    :brand_id,
-                                    :price,
-                                    :quantity,
-                                    :style_id,
-                                    :segment_id,
-                                    :main_category_id,
-                                    :category_id,
-                                    :country_id,
-                                    photos: [])
-  end
-
-  def edit_product_params
     # byebug
     params.require(:product).permit(:name,
                                     :size_id,
@@ -160,4 +153,9 @@ class ProductsController < ApplicationController
   def set_all_products
     @all_products = Product.all
   end
+
+  def refer_url
+    session[:return_to] ||= request.fullpath
+  end
+
 end

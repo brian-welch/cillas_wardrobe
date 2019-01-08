@@ -1,10 +1,76 @@
 <div class="container">
-<%# (0...@product.photos.count).each do |img_index| %>
-<h3>Front Image:</h3>
-<%= image_tag(@product.photos[0], style: "height:300px;") %>
-<h3>Back Image:</h3>
-<%= image_tag(@product.photos[1], style: "height:300px;") %>
+  <div class="show-page-outer-container">
+    <div class="show-page-inner-container">
 
-<%# end %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="show-page-left-column-outer">
+          <div class="show-page-left-column-inner">
+            <div class="show-page-product-breadcrumb">
+              this > that > the other
+            </div>
+            <div class="show-page-product-image-container">
+              <% photo_count = @product.photos.count %>
+              <% if !photo_count.zero? %>
+              <% @product.photos.each_with_index do |photo, i| %>
+                <%= image_tag photo, data: {photo_num:"#{i + 1}"}, class: "show-page-product-image #{i == 0 ? 'top-photo' : ''}" %>
+              <% end %>
+              <div class="show-page-product-image-selector-container">
+              <% (1..photo_count).each do |i| %>
+                <div class="product-image-number-button <%= i == 1 ? 'active' : '' %>">
+                <%= i %>
+                </div>
+              <% end %>
+              </div>
+              <% else %>
+                <%= image_tag "placeholder_prouct_image_01.jpg" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="col-xs-12 col-sm-6">
+        <div class="show-page-right-column-outer">
+          <div class="show-page-product-name">
+            <h1><%= @product.name %> <br>by: <span><%= @product.brand.name %></span></h1>
+          </div>
+          <div class="show-page-product-info-container">
+            <div class="show-page-size">
+              <span>Size:</span><%= @product.size.name %>
+            </div>
+            <div class="show-page-price">
+              <span>Price:</span><%= @product.price %> sek
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="show-page-product-info-container">
+            <div class="show-page-description">
+              <span>Description</span><br>
+              <p><%= @product.description %></p>
+            </div>
+          </div>
+
+          <hr>
+
+          <% if !@product_materials.nil? %>
+            <div class="show-page-product-info-container">
+              <div class="show-page-description">
+                <span>Materials</span><br>
+                <ul>
+                  <% @product_materials.each do |material| %>
+                    <li>
+                      <%= material.percent > 0 ? "#{material.percent}%" : "" %> <%= material.material.name.capitalize %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

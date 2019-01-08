@@ -18,7 +18,7 @@
     </div>
     <hr>
     <div id="new-product-form-container">
-      <%= simple_form_for @new_product, html:{class: "new-product-form", id: "new_product_step_one"} do |f| %>
+      <%= simple_form_for @product, html:{class: "new-product-form", id: "new_product_step_one"} do |f| %>
       <%= f.error_notification %>
       <fieldset class="new-product-input-block"><!-- , remote: true -->
         <legend class="new-product-input-block-title">
@@ -39,11 +39,11 @@
           </div>
         </div>
         <div class="form-row">
-          <%= f.input :product_number, as: :hidden, input_html:{ value: @new_product.product_number, class: "sku-suffix-component" } %>
+          <%= f.input :product_number, as: :hidden, input_html:{ value: @product.product_number, class: "sku-suffix-component" } %>
 
-          <%= f.input :sku, as: :hidden, html:{id: "new-product-form-sku-input"} %>  <!--  as: :hidden, -->
+          <%= f.input :sku,as: :hidden, html:{id: "new-product-form-sku-input"} %>  <!--  as: :hidden, -->
 
-          <%= f.input :live_status, as: :hidden, :input_html => { :value => @new_product.live_status } %>
+          <%= f.input :live_status, as: :hidden, :input_html => { :value => @product.live_status } %>
         </div>
       </fieldset>
       <hr>

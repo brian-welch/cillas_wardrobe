@@ -27,6 +27,7 @@ class Product < ApplicationRecord
   validates :color_id, presence: true
   validates :pattern_id, presence: true
   validates :product_number, presence: true
+  validates :sku, uniqueness: true, presence: true
   validates :description, presence: true
   validates :quantity, presence: true
   validates :brand_id, presence: true
