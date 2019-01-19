@@ -1,0 +1,10 @@
+<% if !cookies[:cookie_accept] %>
+  <div class="cookie-alert alert-dismissible navbar-fixed-bottom" role="alert">
+    <div class="cookie-div-left">
+      This page uses cookies for order processing and user experience. You can read more about our cookies&nbsp;<a href="">here</a>.
+    </div>
+    <div class="cookie-div-right">
+      <%= link_to "I accept", cookies_path, class: 'cookie-button btn-success add-brand-button btn-sm' %>
+    </div>
+  </div>
+<% end %>

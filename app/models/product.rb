@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
 
-  # mount_uploaders :photos, PhotoUploader
-  # serialize :avatars, JSON
+  has_many_attached :photos
 
   belongs_to :brand
   belongs_to :country
@@ -12,9 +11,6 @@ class Product < ApplicationRecord
   belongs_to :segment
   belongs_to :main_category
   belongs_to :category
-  # belongs_to :sub_category
-
-  has_many_attached :photos
 
   has_many :product_materials, dependent: :destroy
   has_many :product_care_instructions, dependent: :destroy
@@ -31,6 +27,7 @@ class Product < ApplicationRecord
   validates :color_id, presence: true
   validates :pattern_id, presence: true
   validates :product_number, presence: true
+  validates :sku, uniqueness: true, presence: true
   validates :description, presence: true
   validates :quantity, presence: true
   validates :brand_id, presence: true
@@ -40,6 +37,5 @@ class Product < ApplicationRecord
   validates :main_category_id, presence: true
   validates :category_id, presence: true
   validates :price, presence: true
-  # validates :photos, presence: true
 
 end

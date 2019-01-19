@@ -18,7 +18,7 @@
     </div>
     <hr>
     <div id="new-product-form-container">
-      <%= simple_form_for @new_product, html:{class: "new-product-form", id: "new_product_step_one"} do |f| %>
+      <%= simple_form_for @product, html:{class: "new-product-form", id: "new_product_step_one"} do |f| %>
       <%= f.error_notification %>
       <fieldset class="new-product-input-block"><!-- , remote: true -->
         <legend class="new-product-input-block-title">
@@ -39,11 +39,11 @@
           </div>
         </div>
         <div class="form-row">
-          <%= f.input :product_number, input_html:{ value: @new_product.product_number, class: "sku-suffix-component" } %>
+          <%= f.input :product_number, as: :hidden, input_html:{ value: @product.product_number, class: "sku-suffix-component" } %>
 
-          <%= f.input :sku, html:{id: "new-product-form-sku-input"} %>  <!--  as: :hidden, -->
+          <%= f.input :sku,as: :hidden, html:{id: "new-product-form-sku-input"} %>  <!--  as: :hidden, -->
 
-          <%= f.input :live_status, :input_html => { :value => @new_product.live_status } %>
+          <%= f.input :live_status, as: :hidden, :input_html => { :value => @product.live_status } %>
         </div>
       </fieldset>
       <hr>
@@ -88,7 +88,7 @@
         <legend class="new-product-input-block-title">
           Step Three: Manufacture &amp; Materials
         </legend>
-        <h6 align="center">A maximum of 5 material components possible.<br>If you need more contact <a href=""><em><u>ADMIN</u></em></a> to assist you.</h6>
+        <h6 align="center">A maximum of 5 material components possible.<br>If you need more contact <a href=""><em><u>ADMIN</u></em></a> to assist you.<br><strong>NOTE:</strong> You can save materials without percentages, if they are missing.</h6>
         <hr>
         <div class="form-row">
           <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -123,12 +123,27 @@
         <legend class="new-product-input-block-title">
           Step Four: Images
         </legend>
-        <%= f.label :photos %>
-        <%= f.file_field :photos, multiple: true %>
-        <!-- <input type="text" name="test_01"><br>
-        <input type="text" name="test_01"> -->
-        <!-- <h6 align="center">Check all that apply.<br>If you need more contact <a href=""><em><u>ADMIN</u></em></a> to assist you.</h6>
-        <hr> -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <h6 style="font-weight:bold;">Note: Uploaded/existing photos shold follow this order:</h6>
+            <ul>
+              <li>Photo [1]: Main/Front Image</li>
+              <li>Photo [2]: Second/back Image</li>
+              <li>Photo [3]: Brand Tag Image</li>
+              <li>Photo [4]: Materials/Care Tag Image</li>
+              <li>Photo [5]: Detail Image</li>
+              <li>Photo [6]: Detail Image</li>
+              <li>Photo [7]: Detail Image</li>
+              <li>Photo [8]: Detail Image</li>
+            </ul>
+          </div>
+        </div>
+        <% (1..8).each do |i| %>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.label "Photo [#{i}]", class: "form-control-label"  %>
+            <%= f.file_field :photos, multiple: true, class: "form-control" %>
+          </div>
+        <% end %>
       </fieldset>
         <div class="form-row" style="display: flex; justify-content: space-around;">
           <%= f.button :submit, class: 'btn btn-success add-brand-button' %>
@@ -136,6 +151,6 @@
       <% end %>
 
     </div>
-
   </div>
+
 </div>

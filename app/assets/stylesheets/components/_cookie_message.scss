@@ -1,0 +1,31 @@
+.cookie-alert {
+  font-size: 15px;
+  background-color: darken(rgba(14, 153, 178, 0.8), 20%);
+  color: rgba(242, 239, 239, 1);
+  min-height: 30px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cookie-div-left {
+  display: block;
+  width: calc(100% - 100px);
+}
+
+.cookie-div-right {
+  display: block;
+  width: 100px;
+}
+
+.cookie-button {
+  //position: absolute;
+  //right: 30px;
+  font-size: 14px;
+  line-height: 14px;
+  min-width: 50px;
+  :hover {
+  }
+}
+

@@ -1,0 +1,24 @@
+.product-edit-image-container {
+  display: flex;
+  & > div {
+    box-shadow: -20px 10px 0 -19px lighten($color2, 20%);
+  }
+  & > div:last-child {
+    box-shadow: -20px 10px 0 -19px lighten($color2, 20%),
+                20px 10px 0 -19px lighten($color2, 20%);
+  }
+}
+
+
+.product-edit-image-box {
+  width: calc(100% / 8);
+  padding: 5px;
+  border-radius: 2px;
+  div {
+    text-align: center;
+  }
+}
+
+.product-edit-image-thumb {
+  width: 100%;
+}

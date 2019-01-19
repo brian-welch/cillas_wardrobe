@@ -8,7 +8,11 @@
           <div class="index-page-card-inner">
             <%= link_to shoes_item_path(product) do %>
               <div class="index-page-card-image-container" style="">
-              <%= image_tag "sample_product_05.jpg" %>
+              <% if !product.photos[0].nil? %>
+                <%= image_tag product.photos[0] %>
+              <% else %>
+                <%= image_tag "placeholder_prouct_image_01.jpg" %>
+              <% end %>
               <div class="index-page-card-image-bottom-fade"></div>
               </div>
               <div class="index-page-card-brand-holder">
@@ -20,9 +24,9 @@
                 <%= product.price - 1 %> SEK
               </div>
             <% end %>
-            <div class="index-page-card-splash">
+            <!-- <div class="index-page-card-splash">
               <i class="fas fa-recycle"></i>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

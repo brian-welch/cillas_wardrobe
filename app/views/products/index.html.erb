@@ -1,0 +1,56 @@
+<style>
+</style>
+<div class="container">
+  <h1 class="page-name">Product Master List</h1>
+  <hr>
+
+      <div class="col-xs-12">
+
+        <div class="product-master-list-outer">
+          <div class="product-master-list-inner">
+            <table class="product-master-list-table striped">
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Segment</th>
+                <th>Main Category</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Live</th>
+              </tr>
+              <% @all_live_products.each do |product| %>
+              <tr>
+                <td class="product-master-list-thumbnail">
+                  <% if !product.photos[0].nil? %>
+                    <%= image_tag product.photos[0] %>
+                  <% else %>
+                    <%= image_tag "placeholder_prouct_image_01.jpg" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to product.name, edit_product_path(product) %>
+                </td>
+                <td>
+                  <%= product.segment.name %>
+                </td>
+                <td>
+                  <%= product.main_category.name %>
+                </td>
+                <td>
+                  <%= product.category.name %>
+                </td>
+                <td>
+                  <%= product.price %>
+                </td>
+                <td>
+                  <%= product.live_status %>
+                </td>
+              </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+</div>
